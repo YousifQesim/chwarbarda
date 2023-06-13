@@ -7,6 +7,30 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+.com_info{
+background:#002E5B;
+
+}
+.svg_info{
+
+color:white
+}
+option{
+background:#002E5B;
+color:white;
+font-weight:bold;
+
+}
+
+select{
+background:#FDE428;
+font-weight:bold;
+}
     .carousel-item {
       display: none;
     }
@@ -18,38 +42,129 @@
     .carousel-control {
       cursor: pointer;
     }
+    .carousel_header{
+    color:#B21A1A;
+    font-weight:bold;
+    }
+    hr{
+    width:40%;
+    background:#FDE428;
+    text-align:center;
+    font-weight:bold;
+    }
+    .carousel_paragraph{
+    color:#000572;
+    font-weight:bold;
+    }
+
+    .call:hover{
+    color:#000572
+    }
+
     #call{
     background:#172554
 
+    }
+     #see_service{
+    background:#172554
+
+    }
+    .service_header{
+    font-family:Roboto;
+    color:#000572;
+    margin-top:10px;
+    }
+.service_hr{
+background:#3282F6}
+.read_more{
+background:#000572;
+}
+.misvis_paragraph{
+font-family:Roboto;
+}
+.slider-container {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    width: 100%; /* Adjust the width based on the number of slides you want to display */
+}
+
+.slider-slide {
+    flex-shrink: 0;
+    width: calc(100% / 4); /* Adjust the width based on the number of slides you want to display */
+    margin-right: 40px;
+}
+
+.slider-slide:last-child {
+    margin-right: 0;
+}
+
+.slider-image {
+    width: 100%;
+    height: auto;
+}
+.slider-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+}
+
+    /* To remove the right margin from the last slide */
+    .footer{
+       background:#172554
+    }
+    .slider-slide:last-child {
+        margin-right: 0;
+    }
+    iframe{
+    margin:0 auto;
+    }
+     #map {
+      height: 400px;
+      width: 100%;
+     text-align:center;
+    }
+    .contact_us{
+    color:#FDE428;}
+    /* Style for the contact section */
+
+    /* Style for the copyright notice */
+    .copyright {
+      margin-top: 20px;
+      text-align: center;
     }
   </style>
 <body>
 
 <!--company inforamtion-->
-<div class="container mx-auto py-8 hidden md:flex justify-end">
+<div class=" com_info mx-auto py-8 hidden md:flex justify-end mx-6">
+    <div id="location-details" class="hidden flex ">
+        <div class="flex items-center mr-4 ">
+            <svg style="color: white  "class="svg_info" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M18,4.48a8.45,8.45,0,0,0-12,12l5.27,5.28a1,1,0,0,0,1.42,0L18,16.43A8.45,8.45,0,0,0,18,4.48ZM16.57,15,12,19.59,7.43,15a6.46,6.46,0,1,1,9.14,0ZM9,7.41a4.32,4.32,0,0,0,0,6.1,4.31,4.31,0,0,0,7.36-3,4.24,4.24,0,0,0-1.26-3.05A4.3,4.3,0,0,0,9,7.41Zm4.69,4.68a2.33,2.33,0,1,1,.67-1.63A2.33,2.33,0,0,1,13.64,12.09Z" fill="white"></path></svg>
 
-
-    <div id="location-details" class="hidden flex mr-6">
-
-        <div class="flex items-center mr-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 384 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M168.3 499.2C116.1 435 0 279.4 0 192C0 85.96 85.96 0 192 0C298 0 384 85.96 384 192C384 279.4 267 435 215.7 499.2C203.4 514.5 180.6 514.5 168.3 499.2H168.3zM192 256C227.3 256 256 227.3 256 192C256 156.7 227.3 128 192 128C156.7 128 128 156.7 128 192C128 227.3 156.7 256 192 256z"/></svg>
-            <span id="location-address" class="ml-1"></span>
+            <span id="location-address" class="ml-1 text-white"></span>
         </div>
-        <div class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16"> <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/> </svg>
-            <span id="location-phone" class="ml-1"></span>
+        <div class="flex items-center ">
+            <svg xmlns="http://www.w3.org/2000/svg"   width="16" height="16" fill="currentColor" class=" svg_info bi bi-telephone" viewBox="0 0 16 16"> <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/> </svg>
+
+            <span id="location-phone" class="ml-1 text-white"></span>
         </div>
     </div>
     <div class="flex items-center space-x-4">
         <select id="location-select" class="border border-gray-300 rounded p-2">
-
-            <option value="" >Choose a location</option>
+            <option value="">Choose a location</option>
             <option value="erbil">Erbil</option>
             <option value="mosul">Mosul</option>
             <option value="talafar">Tal Afar</option>
         </select>
     </div>
 </div>
+
+
+
+
 
 <!--navbar-->
 <nav class="bg-white border-gray-200 dark:bg-gray-900 mr-6">
@@ -90,110 +205,229 @@
     <div class="carousel-item flex items-center justify-center">
         <img class="@apply w-screen h-screen object-cover object-center" src="https://images.unsplash.com/photo-1429497419816-9ca5cfb4571a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80" alt="Slide 2">
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white text-2xl">
-            <h2>CHWARBARDA For General Construction  Ltd.</h2>
-            <p>General Construction, Rehabilitation, Electrical Works, Mechanical Works, Maintenance and Supply Services.</p>
+            <h3 class="carousel_header">CHWARBARDA For General Construction  Ltd.</h3>
+            <hr class="w-48 h-1 mx-auto border-0 rounded md:my-2">
+            <p class="carousel_paragraph" >General Construction, Rehabilitation, Electrical Works, Mechanical Works, Maintenance and Supply Services.</p>
         </div>
     </div>
 
     <div class="carousel-item flex items-center justify-center">
         <img class="@apply w-screen h-screen object-cover object-center" src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=797&q=80" alt="Slide 3">
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white text-2xl">
-            <h2>CHWARBARDA For General Construction  Ltd.</h2>
-            <p>Oil-field Service Company </p>
+            <h3 class="carousel_header" >CHWARBARDA For General Construction  Ltd.</h3>
+            <hr class="w-48 h-1 mx-auto my-1  border-0 rounded md:my-2">
+            <p class="carousel_paragraph">Oil-field Service Company </p>
         </div>
     </div>
     <div class="carousel-item flex items-center justify-center">
         <img class="w-screen h-screen object-cover object-center" src="https://images.pexels.com/photos/159358/construction-site-build-construction-work-159358.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Slide 1">
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white text-2xl">
-            <h2>CHWARBARDA For General Construction  Ltd.</h2>
-            <p>General Construction, Rehabilitation, Electrical Works, Mechanical Works, Maintenance and Supply Services.
+            <h3 class="carousel_header" >CHWARBARDA For General Construction  Ltd.</h3>
+            <hr class="w-48 h-1 mx-auto my-1  border-0 rounded md:my-2">
+            <p class="carousel_paragraph">General Construction, Rehabilitation, Electrical Works, Mechanical Works, Maintenance and Supply Services.
             </p>
         </div>
     </div>
 
 <!--    call us now-->
-    <div id="call" class="h-16">
+    <div id="call" class="h-20 ">
 
-    <a href="tel:123456789" class=" text-black inline-block px-4 py-2 text-white border border-2 border-solid border-yellow-400 bg-#172554">
+    <a href="tel:123456789" class=" call font-bold mx-12 my-4 text-black inline-block px-4 py-2 rounded-md text-white border border-2 cursor-pointer border-solid border-yellow-400 hover:bg-yellow-400 transition ease-in-out delay-150" >
         Call Us Now
     </a>
     </div>
 <!--service -->
-    <div>
-        <h1>service</h1>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Time</th>
-                <th>Posted By</th>
-                <th>Categories</th>
-                <th>Comments</th>
-                <th>Post Title</th>
-                <th>Post Detail</th>
-            </tr>
-            <tr th:each="post : ${servicePosts}">
-                <td th:text="${post.id}"></td>
-                <td th:text="${post.time}"></td>
-                <td th:text="${post.postedBy}"></td>
-                <td th:text="${post.categories}"></td>
-                <td th:text="${post.comments}"></td>
-                <td th:text="${post.postTitle}"></td>
-                <td th:text="${post.postDetail}"></td>
-            </tr>
-        </table>
+<div class="my-20">
+        <h1 class="service_header text-center font-normal font-bold text-4xl">Our Services</h1>
+    <hr class="service_hr w-24 h-1 mx-auto my-1  border-0 rounded md:my-2">
+    <div class=" flex flex-wrap justify-center">
+        <div class="m-8 w-96 m-x-34 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700  "
+             th:each="post : ${servicePosts}">
+            <a th:href="@{'/readmore/' + ${post.id}}">
+                <img class="rounded-t-lg object-cover h-60 w-full" th:src="${post.imageUrls[0]}" alt="Post Image" />
+            </a>
+            <div class="p-5">
+                <a th:href="@{'/readmore/' + ${post.id}}">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" th:text="${post.postTitle}">Noteworthy technology acquisitions 2021</h5>
+                </a>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400" th:text="${post.postDetail}">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                <a th:href="@{'/readmore/' + ${post.id}}" class=" read_more transition ease-in-out delay-150 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white  rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Read more
+                    <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </a>
+            </div>
+        </div>
 
+    </div>
+    </div>
+</div>
+<div/>
+
+<!--see all service-->
+<div id="see_service" class="h-28 text-center">
+<h1 class=" text-white text-center font-normal font-bold text-2xl">See all services</h1>
+    <a href="tel:123456789" class="call font-bold mx-12 my-4 text-black inline-block px-4 py-2 rounded-md text-white border border-2 cursor-pointer border-solid border-yellow-400 hover:bg-yellow-400 transition ease-in-out delay-150">
+    service
+    </a>
+</div>
+<!--OUR MISSION AND VISION-->
+<div class="my-20">
+
+<h1 class="service_header text-center font-normal font-bold text-4xl">Our Mission and Vision</h1>
+<hr class="service_hr w-24 h-1 mx-auto my-1  border-0 rounded md:my-2">
+<div class="bg-gray-200 w-full">
+
+
+<div class="container mx-auto p-4 cursor-pointer  w-3/4 ">
+    <div class="my-10 flex flex-col gap-1 lg:flex-row lg:gap-0 transition-all duration-500 transform hover:scale-105">
+        <div class="w-full lg:w-1/2">
+            <img class="w-3/4" src="https://st3.depositphotos.com/14431644/34729/i/450/depositphotos_347298024-stock-photo-conceptual-hand-writing-showing-our.jpg" alt="First Image">
+        </div>
+        <div class="w-full lg:w-1/2 lg:relative md:top-10">
+            <h1 class="text-2xl font-bold service_header">Mission</h1>
+            <p class="text-gray-800 misvis_paragraph text-grey-500">At Chwarbarda Co. our mission is to establish long term relationship with our client by exceeding expectations and gaining their trust, through providing top of the line constructions service from concept planning through to completion.</p>
+        </div>
+    </div>
+
+    <div class="flex flex-col-reverse gap-4 lg:flex-row lg:gap-0 transition-all duration-500 transform hover:scale-105">
+        <div class="w-full lg:w-1/2 md:order-last">
+            <img class="w-3/4" src="https://as2.ftcdn.net/v2/jpg/03/30/28/45/1000_F_330284507_zWMKJuSAPN2VyomK4et4dTdHi2P8lmHb.jpg" alt="Second Image">
+        </div>
+        <div class="w-full md:w-1/2 md:relative md:top-12">
+            <h1 class="text-2xl font-bold service_header ">Vision</h1>
+            <p class="text-gray-800 misvis_paragraph text-grey-500">Our Vision is to become the leading Companies in our region, whilst playing a leading role in rebuilding Kurdistan region and placing it on the map of highly developed and advance in Iraq.</p>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+<!--out client-->
+<div class="my-20">
+    <h1 class="service_header text-center font-normal font-bold text-4xl">Our Clients</h1>
+    <hr class="service_hr w-24 h-1 mx-auto my-1 border-0 rounded md:my-2">
+    <div class="w-full py-8 my-20">
+        <div class="max-w-6xl mx-auto">
+            <div class="slider-container">
+                <div class="slider">
+                    <div class="slider-slide">
+                        <img src="https://vectorlogoseek.com/wp-content/uploads/2018/11/world-vision-vector-logo.png" alt="Image 2" class="slider-image">
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://ncciraqjobs.com/nccijobsdata/data/employer/comp_18/logo/INGO_IMC.jpeg" alt="Image 3" class="slider-image">
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://www.vaticannews.va/content/dam/vaticannews/multimedia/2022/11/22/cq5dam.web.1280.1280.jpg/_jcr_content/renditions/cq5dam.thumbnail.cropped.750.422.jpeg" alt="Image 4" class="slider-image">
+                    </div>
+                    <div class="slider-slide">
+                        <img src="http://khk-logistics.com/wp-content/uploads/2020/09/DNO-Logo-1.jpg" alt="Image 5" class="slider-image">
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://106ways.files.wordpress.com/2018/11/samaritans-purse-vertical-logo.png" alt="Image 6" class="slider-image">
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://www.kurdistanjob.com/wp-content/uploads/2018/10/Oryx-Petroleum.png" alt="Image 7" class="slider-image">
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://play-lh.googleusercontent.com/CLHHrUIGlc-RVslRtXOEY2v6SO4WGwKoWTjXqHJq4xm5F4yx19HOLmtmiJpTqA6tEOx4=w240-h480-rw" alt="Image 9" class="slider-image">
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://scontent.febl4-2.fna.fbcdn.net/v/t39.30808-6/258184204_2974177902800542_6631856523775557183_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeEr9dDUkjvv04JIg2SvHMrB1jlIXyeV_kLWOUhfJ5X-QhKl4QZyeSGzEZPopBYoYho-VUjdqMsq_kkNqmfkwmcI&_nc_ohc=wnMZKq9fMTEAX9XuLur&_nc_ht=scontent.febl4-2.fna&oh=00_AfBk8skP8bmoSjqL5oMpp0VfWZUAK-_B6ywZhvPg0hFDyA&oe=648D92E3" alt="Image 10" class="slider-image">
+                    </div>
+                    <div class="slider-slide">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Eia-logomark.svg/220px-Eia-logomark.svg.png" alt="Image 11" class="slider-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Map Section -->
+<div class="footer h-full">
+
+    <div class="flex justify-center  w-full my-10">
+        <div id="map" class="w-full">
+            <div class="mx-auto ">
+                <iframe class=" rounded-lg my-10" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3220.084546549645!2d43.96972471134582!3d36.18882560180911!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x400723b60f1de853%3A0x22cc2974d145139d!2sCHWARBARDA%20COMPANY!5e0!3m2!1sen!2siq!4v1686670762724!5m2!1sen!2siq"
+                        width="50%"
+                        height="450"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
     </div>
 
 
 
+    <!-- Contact Section -->
+    <div class="contact-section text-white ml-20 my-32">
+        <h1 class="text-4xl font-bold mb-4 contact_us">Contact Page</h1>
+        <p class="mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M17 3a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V5a2 2 0 012-2h14zm-1 2H4a1 1 0 00-1 1v8a1 1 0 001 1h12a1 1 0 001-1V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+            </svg>
+            Italian Village, House #638, Erbil, Iraq
+        </p>
+        <p class="mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v2a2 2 0 01-2 2h-1v5a2 2 0 01-2 2H8a2 2 0 01-2-2v-5H5a2 2 0 01-2-2V5zm4 2v8h8V7H7zm2 2h4v4H9V9zm1 1v2h2v-2h-2z" clip-rule="evenodd" />
+            </svg>
+            Phone: <a href="tel:+07504604602">07504604602 07504682640</a>
+        </p>
+        <p class="mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 1a9 9 0 100 18 9 9 0 000-18zM1 10a9 9 0 1118 0 9 9 0 01-18 0z" clip-rule="evenodd" />
+                <path d="M5.879 7.464l6.363 4.546a.5.5 0 00.757-.426V8.242l-6.364-4.545a.5.5 0 00-.757.426v3.355z" />
+            </svg>
+            Email: <a href="mailto:info@chwarbarda.com">info@chwarbarda.com</a>
+        </p>
+    </div>
 
+    <div class="text-white text-center">
+        <p class="text-sm">All Rights Reserved &copy;2021 | Powered By Twekl Company – Web Development & Design.</p>
+    </div>
 
-
-
-<!--    <label for="carousel-3" class="carousel-control prev control-1">‹</label>-->
-<!--    <label for="carousel-2" class="carousel-control next control-1">›</label>-->
-<!--    <label for="carousel-1" class="carousel-control prev control-2">‹</label>-->
-<!--    <label for="carousel-3" class="carousel-control next control-2">›</label>-->
-<!--    <label for="carousel-2" class="carousel-control prev control-3">‹</label>-->
-<!--    <label for="carousel-1" class="carousel-control next control-3">›</label>-->
 </div>
 
 
-<div class="container mx-auto py-8 px-4">
-    <!-- Your content here -->
 
-</div>
+
+
+
+
 <script>
+
 // JavaScript code to toggle the for location info
   const locationSelect = document.getElementById('location-select');
-    const locationDetails = document.getElementById('location-details');
+  const locationDetails = document.getElementById('location-details');
+  const locationAddress = document.getElementById('location-address');
+  const locationPhone = document.getElementById('location-phone');
 
-    const locationAddress = document.getElementById('location-address');
-    const locationPhone = document.getElementById('location-phone');
+  locationSelect.addEventListener('change', (event) => {
+    const selectedLocation = event.target.value;
+    if (selectedLocation === 'erbil') {
+      locationAddress.textContent = 'Italian Village_House #638';
+      locationPhone.textContent = '07504604602';
+    } else if (selectedLocation === 'mosul') {
+      locationAddress.textContent = 'Mosul / Noor Qrt.House No#123/128 -27';
+      locationPhone.textContent = '07517637226';
+    } else if (selectedLocation === 'talafar') {
+      locationAddress.textContent = 'Tal Afar / Doctors street House No#17/560';
+      locationPhone.textContent = '07510808942';
+    } else {
+      locationAddress.textContent = '';
+      locationPhone.textContent = '';
+    }
 
-
- locationSelect.addEventListener('change', (event) => {
-      const selectedLocation = event.target.value;
-      if (selectedLocation === 'erbil') {
-
-        locationAddress.textContent = 'Italian Village_House #638';
-        locationPhone.textContent = '07504604602';
-      } else if (selectedLocation === 'mosul') {
-
-        locationAddress.textContent = 'Mosul / Noor Qrt.House No#123/128 -27';
-        locationPhone.textContent = '07517637226';
-      } else if (selectedLocation === 'talafar') {
-
-        locationAddress.textContent = 'Tal Afar / Doctors street House No#17/560';
-        locationPhone.textContent = '07510808942';
-      } else {
-        locationName.textContent = '';
-        locationAddress.textContent = '';
-        locationPhone.textContent = '';
-      }
-
-      locationDetails.classList.toggle('hidden', selectedLocation === '');
-    });
+    locationDetails.classList.toggle('hidden', selectedLocation === '');
+  });
 
   // JavaScript code to toggle the mobile menu
   const mobileMenuBtn = document.querySelector('[data-collapse-toggle="navbar-default"]');
@@ -245,6 +479,38 @@
 
     // Show initial slide
     showSlide(currentIndex);
+<!--our client-->
+    document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.querySelector('.slider');
+    const slides = document.querySelectorAll('.slider-slide');
+    let currentIndex = 0;
+
+    function updateSlider() {
+        slider.style.transform = `translateX(${-currentIndex * slides[0].offsetWidth}px)`;
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlider();
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateSlider();
+    }
+
+    setInterval(nextSlide, 2000); // Automatically advance to the next slide every 2 seconds
+});
+
+
+<!--    map-->
+ function initMap() {
+      var mapOptions = {
+        center: {lat: 40.712776, lng: -74.005974},
+        zoom: 12
+      };
+      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    }
 </script>
 
 </body>
