@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Contact us</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto+Condensed:ital@1&family=Roboto:wght@500&display=swap');
+
+
+*{
+font-family:Roboto;}
+.com_info{
+background:#002E5B;
+
+}
+.svg_info{
+
+color:white
+}
+option{
+background:#002E5B;
+color:white;
+font-weight:bold;
+
+}
+
+select{
+background:#FDE428;
+font-weight:bold;
+height:100%;
+}
+
+ .footer{
+       background:#172554
+
+    }
+
+    /* Style for the copyright notice */
+    .copyright {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .nav ul li a{
+    font-weight:bold;
+    font-family:Roboto;
+    }
+
+    .routes a{
+color:#002E5B;
+}
+.routes span{
+color:#002E5B;
+}
+.pre{
+font-family:Roboto;
+}
+
+
+
+.container {
+  background-color: #fff;
+  padding: 2rem;
+
+}
+
+
+.container .list .num {
+  padding: 0.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: 0.25s;
+}
+.container .list .num:nth-child(0):before {
+  content: '0';
+  font-size: 4rem;
+  font-weight: bold;
+  color: #000;
+  width: 2rem;
+  opacity: 0.05;
+  transition: 0.25s;
+}
+.container .list .num:nth-child(1):before {
+  content: '1';
+  font-size: 4rem;
+  font-weight: bold;
+  color: #000;
+  width: 2rem;
+  opacity: 0.05;
+  transition: 0.25s;
+}
+.container .list .num:nth-child(2):before {
+  content: '2';
+  font-size: 4rem;
+  font-weight: bold;
+  color: #000;
+  width: 2rem;
+  opacity: 0.05;
+  transition: 0.25s;
+}
+.container .list .num:nth-child(3):before {
+  content: '3';
+  font-size: 4rem;
+  font-weight: bold;
+  color: #000;
+  width: 2rem;
+  opacity: 0.05;
+  transition: 0.25s;
+}
+.container .list .num:nth-child(4):before {
+  content: '4';
+  font-size: 4rem;
+  font-weight: bold;
+  color: #000;
+  width: 2rem;
+  opacity: 0.05;
+  transition: 0.25s;
+}
+.container .list .num:nth-child(5):before {
+  content: '5';
+  font-size: 4rem;
+  font-weight: bold;
+  color: #000;
+  width: 2rem;
+  opacity: 0.05;
+  transition: 0.25s;
+}
+.container .list .num:nth-child(6):before {
+  content: '6';
+  font-size: 4rem;
+  font-weight: bold;
+  color: #000;
+  width: 2rem;
+  opacity: 0.05;
+  transition: 0.25s;
+}
+.container .list .num:nth-child(7):before {
+  content: '7';
+  font-size: 4rem;
+  font-weight: bold;
+  color: #000;
+  width: 2rem;
+  opacity: 0.05;
+  transition: 0.25s;
+}
+.container .list .num:nth-child(8):before {
+  content: '8';
+  font-size: 4rem;
+  font-weight: bold;
+  color: #000;
+  width: 2rem;
+  opacity: 0.05;
+  transition: 0.25s;
+}
+.container .list .num:nth-child(9):before {
+  content: '9';
+  font-size: 4rem;
+  font-weight: bold;
+  color: #000;
+  width: 2rem;
+  opacity: 0.05;
+  transition: 0.25s;
+}
+.container .list .num h3 {
+  position: relative;
+  left: -1.5rem;
+  color: #3d3d3d;
+  font-size: 0.85rem;
+  transition: 0.25s;
+}
+.container .list .num:hover {
+  background-color: #fafafa;
+  cursor: pointer;
+}
+.container .list .num:hover:before {
+  opacity: 0.2;
+}
+.container .list .num:hover h3 {
+  left: 1rem;
+}
+h3{
+font-weight:bold;
+font-family: Roboto Condensed;
+font-size:18px;
+}
+.contact_inside_about{
+background:#FDE428;
+}
+.contact_inside_about h1{
+color:#002E5B;
+font-weight:bold;
+
+}
+.contact_inside_about p{
+color:#002E5B;
+font-weight:bold;
+
+}
+.contact_inside_about button{
+color:#002E5B;
+font-weight:bold;
+transmission:all 0.7s;
+cursor:pointer;
+}
+.contact_inside_about button:hover{
+background:#002E5B;
+transmission:all 0.7s;
+color:white;
+}
+
+  </style>
+<body>
+
+
+<div class=" com_info mx-auto py-8 hidden md:flex justify-end ">
+  <div id="location-details" class="hidden  ">
+    <div class="flex items-center mr-4 ">
+      <svg style="color: white  "class="svg_info" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M18,4.48a8.45,8.45,0,0,0-12,12l5.27,5.28a1,1,0,0,0,1.42,0L18,16.43A8.45,8.45,0,0,0,18,4.48ZM16.57,15,12,19.59,7.43,15a6.46,6.46,0,1,1,9.14,0ZM9,7.41a4.32,4.32,0,0,0,0,6.1,4.31,4.31,0,0,0,7.36-3,4.24,4.24,0,0,0-1.26-3.05A4.3,4.3,0,0,0,9,7.41Zm4.69,4.68a2.33,2.33,0,1,1,.67-1.63A2.33,2.33,0,0,1,13.64,12.09Z" fill="white"></path></svg>
+
+      <span id="location-address" class="ml-1 text-white"></span>
+    </div>
+    <div class="flex items-center ">
+      <svg xmlns="http://www.w3.org/2000/svg"   width="16" height="16" fill="currentColor" class=" svg_info bi bi-telephone" viewBox="0 0 16 16"> <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/> </svg>
+
+      <span id="location-phone" class="ml-1 text-white"></span>
+    </div>
+  </div>
+  <div class="flex items-center space-x-4 mx-20">
+    <select id="location-select" class="border border-gray-300 rounded p-4 h-full">
+      <option class="py-2 px-4" value="" disabled selected>Choose a location</option>
+      <option class="py-2 px-4" value="erbil">Erbil</option>
+      <option class="py-2 px-4" value="mosul">Mosul</option>
+      <option class="py-2 px-4" value="talafar">Tal Afar</option>
+    </select>
+  </div>
+</div>
+
+
+
+
+
+<!--navbar-->
+<nav class="bg-white border-gray-200 dark:bg-gray-900 mr-6">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a href="https://flowbite.com/" class="flex items-center">
+      <img src="https://chwarbarda.com/wp-content/uploads/2019/09/06.png" style="width: 180px; height: px;" alt="Chwarbarda">
+    </a>
+    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+      <span class="sr-only">Open main menu</span>
+      <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+    </button>
+    <div class="hidden w-full md:block md:w-auto nav" id="navbar-default">
+      <ul class="w-full text-center font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <li>
+          <a href="/" class="align-center block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Home</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Service</a>
+        </li>
+        <li>
+          <a href="./policy" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Policy</a>
+        </li>
+        <li>
+          <a href="/certifications" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Certifications</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Projects</a>
+        </li>
+        <li>
+          <a href="/about" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About us</a>
+        </li>
+        <li>
+          <a href="/contact" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact us</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<hr class="h-2">
+<div class="container mx-auto px-4">
+  <div class="flex justify-center">
+    <div class="text-center md:w-3/4 rounded-lg p-4">
+      <img src="https://chwarbarda.com/wp-content/uploads/2019/09/02-150x150.png" alt="" class="mx-auto mb-4">
+      <div class="text-justify justify-start ">
+    <pre class="whitespace-pre-wrap pre">
+Chwarbarda constructing Co. An integrated construction company delivering distinctive visionary projects, evolved from locally focused firm into one of Kurdistan region top independent company.
+
+Chwarbarda Co. Offers international construction standards and high quality finishing. Since its establishment.
+
+Chwarbarda Has successfully created employment opportunities skills, delivered services, applied technology and constructed distinctive and sustainable developments.
+
+At Chwarbarda Co. We focus on building excellent for all our clients by delivering the highest quality projects at the shortest amount of time possible. With an ability and expertise in providing complete construction service, Chwarbarda Co. successfully works with its clients from the earliest conceptual stage up to final touches for the projects, of course depending on the requirements of the clients.
+The company aspires to world class fulfillment in the everything it does, through its core competence in industrial design delivering major projects and service primarily to the development of emerging economy and nation. Since its early Stages, Chwarbarda Co. established a strong bond Group of trust with its clients and the communities in which it builds…
+Chwarbarda, within its professional construction department, offers services such as:
+    </pre>
+      </div>
+
+      <div class="container">
+        <div class="list">
+          <div class="num">
+            <h3>          General consultation: Chwarbarda offers consultation service covering design, construction, and management areas.      </h3>
+          </div>
+          <div class="num">
+            <h3>Pre-construction : Chwarbarda offers its Know-how in scheduling estimation, design developing, and value</h3>
+          </div>
+          <div class="num">
+            <h3>Design/build: Chwarbarda Design-build projects delivery solutions abridge the building process. The company directs all aspects of any project include design and construction.</h3>
+          </div>
+          <div class="num">
+            <h3>Construction management: Chwarbarda offers trained professional experts and state-of-the-art construction management systems to direct project Chwarbarda provides pre-construction service, construction oversight, budget and schedule control.</h3>
+          </div>
+          <div class="num">
+            <h3>General contraction: Chwarbarda builds with the expertise to go deep in reviewing and analyzing construction documents. Before delivering Budget Company makes sure everything is complete and accurate.</h3>
+          </div>
+        </div>
+      </div>
+      <p class="text-justify mt-4">
+        Even when designs change, Chwarbarda works with flexibility to integrate any new designs into the construction
+        process.
+      </p>
+    </div>
+    <div class="md:w-1/4 p-4 rounded-lg ml-4 hidden md:block">
+      <div class="w-full contact_inside_about p-8">
+        <h1 class="text-4xl font-bold text-white mb-4">How can we help you?</h1>
+        <p class="text-white mb-4">Contact us at the Consulting WP office nearest to you or submit a business inquiry online.</p>
+        <button class="flex items-center justify-center px-8 py-4 bg-white text-black font-bold rounded-lg bg-white">
+          contact
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer contact-section text-white  h-24 w-full mt-40">
+  <div class="text-white text-center ">
+    <p class="text-lg relative top-10 ">All Rights Reserved &copy;2021 | Powered By Twekl Company – Web Development & Design.</p>
+  </div>
+
+</div>
+<script>
+
+// JavaScript code to toggle the for location info
+  const locationSelect = document.getElementById('location-select');
+  const locationDetails = document.getElementById('location-details');
+  const locationAddress = document.getElementById('location-address');
+  const locationPhone = document.getElementById('location-phone');
+
+  locationSelect.addEventListener('change', (event) => {
+    const selectedLocation = event.target.value;
+    if (selectedLocation === 'erbil') {
+      locationAddress.textContent = 'Italian Village_House #638';
+      locationPhone.textContent = '07504604602';
+    } else if (selectedLocation === 'mosul') {
+      locationAddress.textContent = 'Mosul / Noor Qrt.House No#123/128 -27';
+      locationPhone.textContent = '07517637226';
+    } else if (selectedLocation === 'talafar') {
+      locationAddress.textContent = 'Tal Afar / Doctors street House No#17/560';
+      locationPhone.textContent = '07510808942';
+    } else {
+      locationAddress.textContent = '';
+      locationPhone.textContent = '';
+    }
+
+    locationDetails.classList.toggle('hidden', selectedLocation === '');
+  });
+
+  // navbar
+  const mobileMenuBtn = document.querySelector('[data-collapse-toggle="navbar-default"]');
+  const mobileMenu = document.getElementById('navbar-default');
+
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('flex');
+  });
+
+</script>
+</body>
+</html>
