@@ -3,14 +3,15 @@ package com.chwarbarda.Twekll_Chwarbarda.controller;
 import com.chwarbarda.Twekll_Chwarbarda.Repo.CertificationsRepository;
 import com.chwarbarda.Twekll_Chwarbarda.models.Certifications;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@Service
+@Controller
 public class CertificationsController {
     private final CertificationsRepository certificationsRepository;
 
@@ -26,7 +27,9 @@ public class CertificationsController {
     }
 
     @GetMapping("/certifications")
-    public List<Certifications> getAllCertifications() {
-        return certificationsRepository.findAll();
+    public String getAllCertifications(Model model) {
+        List<Certifications> certifications = certificationsRepository.findAll();
+        model.addAttribute("certifications", certifications);
+        return "certifications";
     }
 }

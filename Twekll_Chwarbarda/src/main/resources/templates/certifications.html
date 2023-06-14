@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Policies</title>
+    <title>certifications</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 
 </head>
@@ -31,10 +31,6 @@ background:#FDE428;
 font-weight:bold;
 height:100%;
 }
-  .nav ul li a{
-    font-weight:bold;
-    font-family:Roboto;
-    }
   .policy_info{
  background:#FDE428;
   }
@@ -60,6 +56,10 @@ min-height:120vh;
     .copyright {
       margin-top: 20px;
       text-align: center;
+    }
+    .nav ul li a{
+    font-weight:bold;
+    font-family:Roboto;
     }
   </style>
 <body>
@@ -135,30 +135,30 @@ min-height:120vh;
         <div class=" mx-auto flex routes my-5 relative top-20 left-2">
             <a class="text-white text-xl " href="/">Home </a>
             <span class="text-white text-xl "> > </span>
-            <a class="text-white text-xl " href="/policy"> Policy</a>
+            <a class="text-white text-xl " href="/certifications"> Certifications</a>
         </div>
 
 
-    <h1 class="service_header  font-normal font-bold text-5xl my-5 relative top-20">Policy</h1>
-    <hr class="service_hr absolute left-30 bottom-16 w-24 h-1 mx-auto my-1  border-0 rounded md:my-2">
-</div>
-
-</div>
-
-
-
-    <div class="policy_images flex flex-wrap gap-4 justify-center mb-30 min-h-min" th:each="policy : ${policies}">
-        <div th:each="imageUrl : ${policy.imageUrls}">
-            <img th:src="@{${imageUrl}}" alt="Policy Image" class="w-32 h-auto sm:w-48 md:w-64 lg:w-72 xl:w-80 2xl:w-96" />
-        </div>
+        <h1 class="service_header  font-normal font-bold text-5xl my-5 relative top-20">Certifications</h1>
+        <hr class="service_hr absolute left-30 bottom-16 w-24 h-1 mx-auto my-1  border-0 rounded md:my-2">
     </div>
+
+</div>
+
+
+
+<div class="policy_images flex flex-wrap gap-4 justify-center mb-30 my-4" th:each="certifications : ${certifications}">
+    <div th:each="imageUrl : ${certifications.imageUrls}">
+        <img th:src="@{${imageUrl}}" alt="certifications Image" class="w-32 h-auto sm:w-48 md:w-64 lg:w-72 xl:w-80 2xl:w-96" />
+    </div>
+</div>
 
 
 
 <div class="footer contact-section text-white  h-24 w-full my-30">
-<div class="text-white text-center">
-    <p class="text-lg relative top-10 ">All Rights Reserved &copy;2021 | Powered By Twekl Company – Web Development & Design.</p>
-</div>
+    <div class="text-white text-center">
+        <p class="text-lg relative top-10 ">All Rights Reserved &copy;2021 | Powered By Twekl Company – Web Development & Design.</p>
+    </div>
 
 </div>
 
