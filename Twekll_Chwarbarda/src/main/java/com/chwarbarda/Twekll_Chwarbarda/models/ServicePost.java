@@ -1,13 +1,16 @@
 package com.chwarbarda.Twekll_Chwarbarda.models;
 
-        import jakarta.persistence.*;
-        import java.util.List;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
+
+import java.util.List;
 
 @Entity
 public class ServicePost {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String time;
     private String postedBy;
     private String categories;
@@ -19,6 +22,7 @@ public class ServicePost {
     @Column(name = "image_url")
     private List<String> imageUrls;
 
+    @Size(max = 90000000, message = "Post detail must have at least 90000000 characters")
     private String postDetail;
 
     // getters and setters (or use Lombok annotations)

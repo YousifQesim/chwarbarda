@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>certifications</title>
+    <title>service</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 
 </head>
@@ -31,6 +31,10 @@ background:#FDE428;
 font-weight:bold;
 height:100%;
 }
+  .nav ul li a{
+    font-weight:bold;
+    font-family:Roboto;
+    }
   .policy_info{
  background:#FDE428;
   }
@@ -42,12 +46,31 @@ color:#002E5B;
 .routes span{
 color:#002E5B;
 }
-.policy_images{
-width:80%;
-margin:0 auto;
-min-height:120vh;
+.service-img{
+82%}
+.svg{
 
+background:#FDE428;
+color:#002E5B;
 }
+.read-more{
+color:#002E5B;
+}
+.read-more:hover .svg{
+background:#002E5B;
+color:#FDE428;
+}
+.relative {
+    position: relative;
+}
+
+.p-6:hover img {
+    transform: scale(1.1);
+    border-radius: 8px; /* Apply the same border-radius as the overlay */
+}
+
+
+
  .footer{
        background:#172554
     }
@@ -56,10 +79,6 @@ min-height:120vh;
     .copyright {
       margin-top: 20px;
       text-align: center;
-    }
-    .nav ul li a{
-    font-weight:bold;
-    font-family:Roboto;
     }
   </style>
 <body>
@@ -135,21 +154,44 @@ min-height:120vh;
         <div class=" mx-auto flex routes my-5 relative top-20 left-2">
             <a class="text-white text-xl " href="/">Home </a>
             <span class="text-white text-xl "> > </span>
-            <a class="text-white text-xl " href="/certifications"> Certifications</a>
+            <a class="text-white text-xl " href="/service"> service</a>
         </div>
 
 
-        <h1 class="service_header  font-normal font-bold text-5xl my-5 relative top-20">Certifications</h1>
+        <h1 class="service_header  font-normal font-bold text-5xl my-5 relative top-20">Service</h1>
         <hr class="service_hr absolute left-30 bottom-16 w-24 h-1 mx-auto my-1  border-0 rounded md:my-2">
     </div>
 
 </div>
+<div class="container mx-auto">
+    <div class="flex flex-col items-start justify-center">
+        <div th:each="post : ${servicePosts}" class="p-6 w-auto h-auto rounded-lg">
+            <div class="flex flex-col md:flex-row md:items-center">
+                <a th:href="@{'/service/' + ${post.id}}">
+                    <div class="relative">
+                        <img class="object-cover w-72 h-60 md:w-80 md:h-64 mr-4 rounded-lg transition-all duration-300" th:src="${post.imageUrls[0]}" alt="Post Image" />
+                        <div class="overlay"></div>
+                    </div>
+                </a>
+                <div>
+                    <div class="flex flex-col items-center">
+                        <a th:href="@{'/service/' + ${post.id}}">
+                            <h1 class="text-2xl font-bold text-blue-900 dark:text-white mb-2 hover:text-blue-600" th:text="${post.postTitle}"></h1>
+                        </a>
 
 
-
-<div class="policy_images flex flex-wrap gap-4 justify-center mb-30 my-4" th:each="certifications : ${certifications}">
-    <div th:each="imageUrl : ${certifications.imageUrls}">
-        <img th:src="@{${imageUrl}}" alt="certifications Image" class="w-32 h-auto sm:w-48 md:w-64 lg:w-72 xl:w-80 2xl:w-96" />
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 truncate" th:text="${#strings.abbreviate(post.postDetail, 50)}"></p>
+                        <a th:href="@{'/service/' + ${post.id}}" class="read-more inline-flex items-center px-3 py-2 text-sm font-medium text-white rounded-lg transition ease-in-out duration-300">
+                            <svg aria-hidden="true" class="svg rounded-full w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                            <pre> </pre>
+                            Read more
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -161,6 +203,9 @@ min-height:120vh;
     </div>
 
 </div>
+
+
+
 
 
 <script>
@@ -198,7 +243,14 @@ min-height:120vh;
     mobileMenu.classList.toggle('hidden');
     mobileMenu.classList.toggle('flex');
   });
+ const postDetailElement = document.getElementById('postDetail');
+  const postDetailText = "{{ post.postDetail }}";
+  const wordCount = 10; // Change this number to the desired word count
 
+  const words = postDetailText.split(' ');
+  const truncatedText = words.slice(0, wordCount).join(' ');
+
+  postDetailElement.textContent = truncatedText;
 </script>
 </body>
 </html>

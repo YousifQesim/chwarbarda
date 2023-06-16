@@ -5,14 +5,14 @@ import com.chwarbarda.Twekll_Chwarbarda.models.ServicePost;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
+
 @Controller
+
 
 
 public class ServicePostController {
@@ -33,20 +33,37 @@ public class ServicePostController {
 
 
     @GetMapping("/")
-    public String getAllServicePosts(Model model) {
+    public String getAllServicePostsInIndex(Model model) {
         List<ServicePost> servicePosts = servicePostRepository.findAll();
         model.addAttribute("servicePosts", servicePosts);
         return "index";
     }
+    @GetMapping("/service")
+    public String getAllServicePostsInService(Model model) {
+        List<ServicePost> servicePosts = servicePostRepository.findAll();
+        model.addAttribute("servicePosts", servicePosts);
+        return "service";
+    }
 
-
-
-    @PostMapping("/addservice")
-    public ServicePost createServicePost(@RequestBody ServicePost servicePost) {
-        return servicePostRepository.save(servicePost);
+    @GetMapping("/service/{id}")
+    public String getServicePostDetails(@PathVariable Long id, Model model) {
+        ServicePost servicePost = servicePostRepository.findById(id).orElse(null);
+        model.addAttribute("servicePost", servicePost);
+        return "servicePostDetails";
     }
 
 
+    @GetMapping("/admin")
+    public String showAdminPage() {
+        return "admin";
+    }
+
+
+    @PostMapping("/addservice")
+    public String createServicePost(@ModelAttribute ServicePost servicePost) {
+        servicePostRepository.save(servicePost);
+        return "redirect:/admin"; // Redirect to the admin page after submitting the form
+    }
 
 
 
