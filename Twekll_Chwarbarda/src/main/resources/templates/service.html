@@ -56,16 +56,13 @@ color:#002E5B;
 .read-more{
 color:#002E5B;
 }
-.read-more:hover .svg{
-background:#002E5B;
-color:#FDE428;
-}
+
 .relative {
     position: relative;
 }
 
 .p-6:hover img {
-    transform: scale(1.1);
+
     border-radius: 8px; /* Apply the same border-radius as the overlay */
 }
 
@@ -148,9 +145,11 @@ color:#FDE428;
         </div>
     </div>
 </nav>
-<div class="policy_info h-72 relative">
-
+<div class="policy_info h-72 w-full relative">
+    <div class=" w-72">
     <div class="block  w-30 container mx-40 ">
+
+
         <div class=" mx-auto flex routes my-5 relative top-20 left-2">
             <a class="text-white text-xl " href="/">Home </a>
             <span class="text-white text-xl "> > </span>
@@ -161,15 +160,16 @@ color:#FDE428;
         <h1 class="service_header  font-normal font-bold text-5xl my-5 relative top-20">Service</h1>
         <hr class="service_hr absolute left-30 bottom-16 w-24 h-1 mx-auto my-1  border-0 rounded md:my-2">
     </div>
+    </div>
 
 </div>
 <div class="container mx-auto">
-    <div class="flex flex-col items-start justify-center">
+    <div class="flex flex-col xl:items-start items-center justify-center">
         <div th:each="post : ${servicePosts}" class="p-6 w-auto h-auto rounded-lg">
             <div class="flex flex-col md:flex-row md:items-center">
                 <a th:href="@{'/service/' + ${post.id}}">
                     <div class="relative">
-                        <img class="object-cover w-72 h-60 md:w-80 md:h-64 mr-4 rounded-lg transition-all duration-300" th:src="${post.imageUrls[0]}" alt="Post Image" />
+                        <img class="object-cover xl:hover:scale-100 w-72 h-60 md:w-80 md:h-64 mr-4 rounded-lg transition-all duration-300" th:src="${post.imageUrls[0]}" alt="Post Image" />
                         <div class="overlay"></div>
                     </div>
                 </a>
@@ -181,7 +181,7 @@ color:#FDE428;
 
 
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 truncate" th:text="${#strings.abbreviate(post.postDetail, 50)}"></p>
-                        <a th:href="@{'/service/' + ${post.id}}" class="read-more inline-flex items-center px-3 py-2 text-sm font-medium text-white rounded-lg transition ease-in-out duration-300">
+                        <a th:href="@{'/service/' + ${post.id}}" class="read-more inline-flex p-3 items-center px-3 py-2 text-lg font-medium text-white rounded-lg transition ease-in-out duration-300">
                             <svg aria-hidden="true" class="svg rounded-full w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                             </svg>

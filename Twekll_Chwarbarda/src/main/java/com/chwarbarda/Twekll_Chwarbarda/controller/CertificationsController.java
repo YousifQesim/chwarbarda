@@ -21,9 +21,8 @@ public class CertificationsController {
     }
 
     @PostMapping("/addCertifications")
-    public String createCertifications(@RequestBody Certifications certifications) {
-         certificationsRepository.save(certifications);
-        return "redirect:/admin";
+    public Certifications createCertifications(@RequestBody Certifications certifications) {
+        return certificationsRepository.save(certifications);
     }
 
     @GetMapping("/certifications")

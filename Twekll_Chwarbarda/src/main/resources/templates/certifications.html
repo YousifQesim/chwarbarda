@@ -147,9 +147,9 @@ min-height:120vh;
 
 
 
-<div class="policy_images flex flex-wrap gap-4 justify-center mb-30 my-4" th:each="certifications : ${certifications}">
+<div class="policy_images flex md:flex-row flex-col flex-wrap gap-4 items-center justify-center mb-30 my-4" th:each="certifications : ${certifications}">
     <div th:each="imageUrl : ${certifications.imageUrls}">
-        <img th:src="@{${imageUrl}}" alt="certifications Image" class="w-32 h-auto sm:w-48 md:w-64 lg:w-72 xl:w-80 2xl:w-96" />
+        <img th:src="@{${imageUrl}}" alt="certifications Image" class="w-64 text-center h-auto xl:w-80 2xl:w-96" />
     </div>
 </div>
 

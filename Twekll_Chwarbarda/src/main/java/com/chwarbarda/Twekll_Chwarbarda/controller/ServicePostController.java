@@ -52,17 +52,10 @@ public class ServicePostController {
         return "servicePostDetails";
     }
 
-
-    @GetMapping("/admin")
-    public String showAdminPage() {
-        return "admin";
-    }
-
-
     @PostMapping("/addservice")
-    public String createServicePost(@ModelAttribute ServicePost servicePost) {
-        servicePostRepository.save(servicePost);
-        return "redirect:/admin"; // Redirect to the admin page after submitting the form
+    public ServicePost ServicePost(@ModelAttribute ServicePost servicePost) {
+       return servicePostRepository.save(servicePost);
+    // Redirect to the admin page after submitting the form
     }
 
 

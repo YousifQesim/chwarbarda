@@ -1,48 +1,19 @@
-<!-- admin.html -->
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-  <!-- Add necessary CSS and JavaScript dependencies -->
-</head>
-<body>
-<h1>Admin Page</h1>
-
-<!DOCTYPE html>
-<html>
-<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Admin Page</title>
 </head>
 <body>
 <h1>Admin Page</h1>
-
-<!-- Add the form here -->
-<form action="/addservice" method="post">
-  <!-- Include the input fields for the form -->
-  <!-- For example: -->
-  <label for="time">Time:</label>
-  <input type="text" id="time" name="time">
-
-  <label for="postedBy">Posted By:</label>
-  <input type="text" id="postedBy" name="postedBy">
-
-  <label for="categories">Categories:</label>
-  <input type="text" id="categories" name="categories">
-
-  <label for="comments">Comments:</label>
-  <input type="text" id="comments" name="comments">
-
-  <label for="postTitle">Post Title:</label>
-  <input type="text" id="postTitle" name="postTitle">
-
-  <input type="submit" value="Submit">
+<form th:action="@{/admin/addservice}" method="post" th:object="${servicePost}">
+  <!-- Form fields -->
+  <input type="text" th:field="*{postTitle}" placeholder="Post Title" required/>
+  <textarea th:field="*{postDetail}" placeholder="Post Detail" required></textarea>
+  <input type="submit" value="Add Post"/>
 </form>
-
-<!-- Add any other content you want to display on the admin page -->
-</body>
-</html>
-
-
-<!-- Add other forms for adding data as needed -->
-
 </body>
 </html>

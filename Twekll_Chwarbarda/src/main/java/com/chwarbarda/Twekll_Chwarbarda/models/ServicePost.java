@@ -1,8 +1,8 @@
 package com.chwarbarda.Twekll_Chwarbarda.models;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Entity

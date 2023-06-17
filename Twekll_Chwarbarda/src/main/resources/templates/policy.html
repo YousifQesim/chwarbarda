@@ -129,27 +129,30 @@ min-height:120vh;
         </div>
     </div>
 </nav>
-<div class="policy_info h-72 relative">
+<div class="policy_info h-72 w-full relative">
+    <div class=" w-72">
+        <div class="block  w-30 container mx-40 ">
 
-    <div class="block  w-30 container mx-40 ">
-        <div class=" mx-auto flex routes my-5 relative top-20 left-2">
-            <a class="text-white text-xl " href="/">Home </a>
-            <span class="text-white text-xl "> > </span>
-            <a class="text-white text-xl " href="/policy"> Policy</a>
+
+            <div class=" mx-auto flex routes my-5 relative top-20 left-2">
+                <a class="text-white text-xl " href="/">Home </a>
+                <span class="text-white text-xl "> > </span>
+                <a class="text-white text-xl " href="/policy">Policy</a>
+            </div>
+
+
+            <h1 class="service_header  font-normal font-bold text-5xl my-5 relative top-20">Policy</h1>
+            <hr class="service_hr absolute left-30 bottom-16 w-24 h-1 mx-auto my-1  border-0 rounded md:my-2">
         </div>
-
-
-    <h1 class="service_header  font-normal font-bold text-5xl my-5 relative top-20">Policy</h1>
-    <hr class="service_hr absolute left-30 bottom-16 w-24 h-1 mx-auto my-1  border-0 rounded md:my-2">
-</div>
+    </div>
 
 </div>
 
 
 
-    <div class="policy_images flex flex-wrap gap-4 justify-center mb-30 min-h-min" th:each="policy : ${policies}">
+    <div class="policy_images w-full flex flex-col md:flex-row flex-wrap gap-4 items-center justify-center mb-30 min-h-min" th:each="policy : ${policies}">
         <div th:each="imageUrl : ${policy.imageUrls}">
-            <img th:src="@{${imageUrl}}" alt="Policy Image" class="w-32 h-auto sm:w-48 md:w-64 lg:w-72 xl:w-80 2xl:w-96" />
+            <img th:src="@{${imageUrl}}" alt="Policy Image" class="w-64 text-center h-auto xl:w-80 2xl:w-96" />
         </div>
     </div>
 

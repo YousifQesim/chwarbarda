@@ -1,10 +1,7 @@
 package com.chwarbarda.Twekll_Chwarbarda.models;
 
-
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.util.List;
-
 @Entity
 @Table(name = "certifications")
 public class Certifications {
