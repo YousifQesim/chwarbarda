@@ -23,7 +23,7 @@ public class PolicyController {
     @PostMapping("/addpolicies")
     public String createPolicy(@RequestBody Policy policy) {
         policyRepository.save(policy);
-        return "redirect:/policies";
+        return "redirect:/admin/adminpolicy";
     }
 
     @GetMapping("/policy")

@@ -21,8 +21,9 @@ public class CertificationsController {
     }
 
     @PostMapping("/addCertifications")
-    public Certifications createCertifications(@RequestBody Certifications certifications) {
-        return certificationsRepository.save(certifications);
+    public String createCertifications(@RequestBody Certifications certifications) {
+         certificationsRepository.save(certifications);
+        return "redirect:/admin/admincertification";
     }
 
     @GetMapping("/certifications")
@@ -31,4 +32,5 @@ public class CertificationsController {
         model.addAttribute("certifications", certifications);
         return "certifications";
     }
+
 }

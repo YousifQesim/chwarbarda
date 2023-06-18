@@ -1,7 +1,9 @@
 package com.chwarbarda.Twekll_Chwarbarda.models;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
+
 @Entity
 @Table(name = "project")
 public class Project {
@@ -9,23 +11,23 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "short_title")
-    private String shortTitle;
-
-    @Column(name = "long_title")
-    private String longTitle;
-
     @Column(name = "project_name")
     private String projectName;
 
-    @Column(name = "contract_no")
-    private String contractNo;
+    @Column(name = "location")
+    private String location;
 
-    @Column(name = "contract_price")
-    private double contractPrice;
+    @Column(name = "client")
+    private String client;
 
-    @Column(name = "project_duration")
-    private int projectDuration;
+    @Column(name = "value")
+    private double value;
+
+    @Column(name = "start_date")
+    private Date startDate;
+
+    @Column(name = "end_date")
+    private Date endDate;
 
     @ElementCollection
     private List<String> imageUrls;
@@ -38,22 +40,6 @@ public class Project {
         this.id = id;
     }
 
-    public String getShortTitle() {
-        return shortTitle;
-    }
-
-    public void setShortTitle(String shortTitle) {
-        this.shortTitle = shortTitle;
-    }
-
-    public String getLongTitle() {
-        return longTitle;
-    }
-
-    public void setLongTitle(String longTitle) {
-        this.longTitle = longTitle;
-    }
-
     public String getProjectName() {
         return projectName;
     }
@@ -62,28 +48,44 @@ public class Project {
         this.projectName = projectName;
     }
 
-    public String getContractNo() {
-        return contractNo;
+    public String getLocation() {
+        return location;
     }
 
-    public void setContractNo(String contractNo) {
-        this.contractNo = contractNo;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public double getContractPrice() {
-        return contractPrice;
+    public String getClient() {
+        return client;
     }
 
-    public void setContractPrice(double contractPrice) {
-        this.contractPrice = contractPrice;
+    public void setClient(String client) {
+        this.client = client;
     }
 
-    public int getProjectDuration() {
-        return projectDuration;
+    public double getValue() {
+        return value;
     }
 
-    public void setProjectDuration(int projectDuration) {
-        this.projectDuration = projectDuration;
+    public void setValue(double value) {
+        this.value = value;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public List<String> getImageUrls() {
@@ -93,6 +95,7 @@ public class Project {
     public void setImageUrls(List<String> imageUrls) {
         this.imageUrls = imageUrls;
     }
-// Constructors, getters, and setters
+
+    // Constructors, getters, and setters
     // ...
 }

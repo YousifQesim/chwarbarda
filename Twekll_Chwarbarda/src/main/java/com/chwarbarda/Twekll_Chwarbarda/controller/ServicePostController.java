@@ -53,9 +53,9 @@ public class ServicePostController {
     }
 
     @PostMapping("/addservice")
-    public ServicePost ServicePost(@ModelAttribute ServicePost servicePost) {
-       return servicePostRepository.save(servicePost);
-    // Redirect to the admin page after submitting the form
+    public String addServicePost(@ModelAttribute ServicePost servicePost) {
+        servicePostRepository.save(servicePost);
+        return "redirect:/admin/adminservice";
     }
 
 

@@ -6,14 +6,87 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Admin Page</title>
+<!--  <link href="https://cdn.tailwindcss.com/2.2.19/tailwind.min.css" rel="stylesheet">-->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+  .nav ul li a{
+    font-weight:bold;
+    font-family:Roboto;
+    }
+
+  </style>
 </head>
+
 <body>
-<h1>Admin Page</h1>
-<form th:action="@{/admin/addservice}" method="post" th:object="${servicePost}">
-  <!-- Form fields -->
-  <input type="text" th:field="*{postTitle}" placeholder="Post Title" required/>
-  <textarea th:field="*{postDetail}" placeholder="Post Detail" required></textarea>
-  <input type="submit" value="Add Post"/>
-</form>
+
+
+
+<nav class="bg-white border-gray-200 dark:bg-gray-900 mr-6">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a href="https://flowbite.com/" class="flex items-center">
+      <img src="https://chwarbarda.com/wp-content/uploads/2019/09/06.png" style="width: 180px; height: px;" alt="Chwarbarda">
+    </a>
+    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+      <span class="sr-only">Open main menu</span>
+      <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+    </button>
+    <div class="hidden w-full md:block md:w-auto nav" id="navbar-default">
+      <ul class="w-full text-center font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <li>
+          <a href="/admin/adminservice" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" aria-current="page">Admin Service</a>
+        </li>
+        <li>
+          <a href="/admin/adminpolicy" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Admin Policy</a>
+        </li>
+        <li>
+          <a href="/admin/admincertification" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Admin Certifications</a>
+        </li>
+        <li>
+          <a href="/admin/adminproject" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Admin Projects</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<div class="flex flex-col items-center justify-center h-screen w-92">
+  <div class="max-w-xl p-8 bg-white shadow-lg rounded-lg fadeIn">
+    <img src="https://chwarbarda.com/wp-content/uploads/2019/09/06.png" alt="Admin Icon" class="mx-auto w-32 h-auto mb-6">
+
+    <h1 class="text-3xl font-bold text-blue-900 mb-6">Welcome to the Admin Page</h1>
+    <p class="text-gray-600 mb-6 font-bold">For entering data to the database, navigate the pages above.</p>
+  </div>
+</div>
+
+<script>
+
+// JavaScript code to toggle the for location info
+
+
+  // navbar
+  const mobileMenuBtn = document.querySelector('[data-collapse-toggle="navbar-default"]');
+  const mobileMenu = document.getElementById('navbar-default');
+
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('flex');
+  });
+ const postDetailElement = document.getElementById('postDetail');
+  const postDetailText = "{{ post.postDetail }}";
+  const wordCount = 10; // Change this number to the desired word count
+
+  const words = postDetailText.split(' ');
+  const truncatedText = words.slice(0, wordCount).join(' ');
+
+  postDetailElement.textContent = truncatedText;
+</script>
 </body>
 </html>
