@@ -3,11 +3,13 @@ package com.chwarbarda.Twekll_Chwarbarda.controller;
 import com.chwarbarda.Twekll_Chwarbarda.Repo.ProjectRepository;
 import com.chwarbarda.Twekll_Chwarbarda.models.Project;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 
 public class ProjectController {
     private final ProjectRepository projectRepository;
@@ -22,16 +24,27 @@ public class ProjectController {
         return projectRepository.findAll();
     }
 
-    @GetMapping("/{id}")
-    public Project getProjectById(@PathVariable Long id) {
-        return projectRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid project ID: " + id));
+    @GetMapping("/projects")
+    public String getAllProjectsinProject(Model model) {
+        List<Project> projects = projectRepository.findAll();
+        model.addAttribute("projects", projects);
+        return "projects";
     }
 
-    @PostMapping
-    public Project createProject(@RequestBody Project project) {
-        return projectRepository.save(project);
+    @GetMapping("/projects/{id}")
+    public String getProjectsById(@PathVariable Long id, Model model) {
+        Project projects = projectRepository.findById(id).orElse(null);
+        model.addAttribute("projects", projects);
+        return "projects";
     }
+
+
+    @PostMapping("/addprojects")
+    public String AddProjects(@ModelAttribute Project projects) {
+        projectRepository.save(projects);
+        return "redirect:/admin/adminprojects";
+    }
+
 
 
 }
