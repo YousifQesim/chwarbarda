@@ -6,7 +6,11 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "servicePost")
 public class ServicePost {
+    public ServicePost() {
+        // Default constructor
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

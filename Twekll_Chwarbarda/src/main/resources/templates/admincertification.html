@@ -1,105 +1,83 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certifications</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin certification</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100 py-8 px-4  ">
+<body class="bg-gray-100 py-8 px-4">
 <a href="/admin" class="text-center bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">Admin Page</a>
 
+<div class="max-w-md mx-auto">
+    <form th:action="@{/admin/addCertifications}" th:object="${certifications}" method="post" class="mt-8">
+        <select id="numUrls" name="numUrls" onchange="addInputFields()" class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="" disabled selected>Number of Image URLs to Add:</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
 
-<div class="container mx-auto max-w-screen-xl py-8 my-12">
+        <div class="mb-4">
+            <ul id="imageUrlList"   placeholder="Image URL"; class="mb-4"></ul>
+        </div>
 
-    <!-- Add Certification Form -->
-    <div class="bg-white shadow rounded-lg p-6 mb-8">
-        <h2 class="text-2xl font-bold mb-4">Add Certification</h2>
-        <form th:action="@{/addCertifications}" method="post" th:object="${certification}" enctype="multipart/form-data">
-            <div class="mb-4">
-                <label for="imageCount" class="block text-gray-700 font-bold mb-2">Number of Image URLs:</label>
-                <select id="imageCount" onchange="addImageInputs()" class="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:border-blue-500">
-                    <option value="" disabled selected>Select number of URLs</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-            </div>
-
-            <div id="imageInputsContainer" class="mb-4"></div>
-            <input type="submit" value="Add Post" class="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-800 transition duration-200">
-        </form>
-    </div>
-
-    <!-- Certifications Table -->
-    <div class="bg-white shadow rounded-lg p-6">
-        <h2 class="text-2xl font-bold mb-4">Certifications</h2>
-        <table class="w-full bg-white rounded-lg shadow-md mt-4 hidden 2xl:table">
-            <thead>
-            <tr>
-                <th class="py-2 px-4 bg-gray-200 font-bold text-sm text-gray-700">ID</th>
-                <th class="py-2 px-4 bg-gray-200 font-bold text-sm text-gray-700">Image URLs</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="certification : ${certifications}">
-                <td class="py-2 px-4 border-b border-gray-200" th:text="${certification.id}"></td>
-                <td class="py-2 px-4 border-b border-gray-200">
-                    <ul>
-                        <li th:each="imageUrl : ${certification.imageUrls}" th:text="${imageUrl}"></li>
-                    </ul>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-    </div>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create certification</button>
+    </form>
 </div>
 
+<h2 class="text-2xl font-bold mt-8">Certification Table</h2>
+<table class="w-full  rounded-lg mt-4">
+    <thead>
+    <tr>
+        <th class="py-2 px-4 bg-gray-200 font-bold text-sm text-gray-700">ID</th>
+        <th class="py-2 px-4 bg-gray-200 font-bold text-sm text-gray-700">Image URLs</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="certification : ${certificationsList}">
+        <td class="py-2 px-4 border-b border-gray-200" th:text="${certification.id}"></td>
+        <td class="py-2 px-4 border-b border-gray-200">
+            <ul>
+                <li th:each="imageUrl : ${certification.imageUrls}" th:text="${imageUrl}" ></li>
+            </ul>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
 <script>
+        function addInputFields() {
+            var numUrls = document.getElementById("numUrls").value;
+            var imageUrlList = document.getElementById("imageUrlList");
 
-  var form = document.querySelector('form');
+            // Clear the existing input fields
+            imageUrlList.innerHTML = "";
 
+            for (var i = 0; i < numUrls; i++) {
+                var li = document.createElement("li");
+                var input = document.createElement("input");
+                input.type = "text";
+                input.name = "imageUrls";
+                input.className = "border border-gray-300 rounded px-3 py-2 mb-1 focus:outline-none focus:ring-2 focus:ring-blue-500";
+                li.appendChild(input);
+                imageUrlList.appendChild(li);
+            }
+        }
 
-  form.addEventListener('submit', function(event) {
-    event.preventDefault()
-
-    var toastEl = document.getElementById('toast');
-    var toastMessageEl = document.getElementById('toastMessage');
-    toastMessageEl.textContent = 'Message displayed after submitting the form.';
-    toastEl.classList.remove('hidden');
-    setTimeout(function() {
-      toastEl.classList.add('hidden');
-    }, 3000);
-    form.reset();
-
-  });
-
-
-  function addImageInputs() {
-    var count = parseInt(document.getElementById('imageCount').value);
-    var container = document.getElementById('imageInputsContainer');
-    container.innerHTML = ''; // Clear previous inputs
-
-    for (var i = 0; i < count; i++) {
-      var input = document.createElement('input');
-      input.type = 'text';
-      input.name = 'imageUrls[' + i + ']';
-      input.placeholder = 'Image URL';
-      input.required = true;
-      input.classList.add('w-full', 'border', 'border-gray-300', 'px-3', 'py-2', 'rounded', 'focus:outline-none', 'focus:border-blue-500', 'mt-2');
-      container.appendChild(input);
-      container.appendChild(document.createElement('br'));
-    }
-  }
-</script>
-
+        function submitForm() {
+            var form = document.getElementById("imageForm");
+            form.action = "/admin/addCertifications";
+            form.method = "POST";
+        }
+    </script>
 </body>
 </html>

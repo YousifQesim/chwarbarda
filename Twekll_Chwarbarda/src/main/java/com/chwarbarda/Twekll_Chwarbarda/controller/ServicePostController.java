@@ -52,11 +52,7 @@ public class ServicePostController {
         return "servicePostDetails";
     }
 
-    @PostMapping("/addservice")
-    public String addServicePost(@ModelAttribute ServicePost servicePost) {
-        servicePostRepository.save(servicePost);
-        return "redirect:/admin/adminservice";
-    }
+
 
 
 

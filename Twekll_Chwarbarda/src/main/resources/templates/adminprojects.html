@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Projects</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 py-8 px-4">
+<a href="/admin" class="text-center bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">Admin Page</a>
+
+<div class="max-w-md mx-auto">
+
+    <form th:action="@{/admin/addproject}" th:object="${project}" method="post" class="mt-8">
+        <div class="mb-4">
+            <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+            <input type="text" id="name" th:field="*{projectName}" placeholder="Project Name" required class="w-full border border-gray-300 rounded-md p-2">
+        </div>
+        <div class="mb-4">
+            <label for="location" class="block text-gray-700 text-sm font-bold mb-2">Location:</label>
+            <input type="text" id="location" th:field="*{location}" placeholder="Location" required class="w-full border border-gray-300 rounded-md p-2">
+        </div>
+        <div class="mb-4">
+            <label for="client" class="block text-gray-700 text-sm font-bold mb-2">Client:</label>
+            <input type="text" id="client" th:field="*{client}" required placeholder="Client" class="w-full border border-gray-300 rounded-md p-2">
+        </div>
+        <div class="mb-4">
+            <label for="value" class="block text-gray-700 text-sm font-bold mb-2">Value:</label>
+            <input type="number" id="value" th:field="*{value}" required placeholder="Value" class="w-full border border-gray-300 rounded-md p-2">
+        </div>
+        <div class="mb-4">
+            <label for="startDate" class="block text-gray-700 text-sm font-bold mb-2">Start Date:</label>
+            <input type="date" id="startDate" th:field="*{startDate}" required class="w-full border border-gray-300 rounded-md p-2">
+        </div>
+        <div class="mb-4">
+            <label for="endDate" class="block text-gray-700 text-sm font-bold mb-2">End Date:</label>
+            <input type="date" id="endDate" th:field="*{endDate}" required class="w-full border border-gray-300 rounded-md p-2">
+        </div>
+
+        <div class="mb-4">
+            <label for="numUrls" class="block text-gray-700 text-sm font-bold mb-2">Number of Image URLs to Add:</label>
+            <select id="numUrls" name="numUrls" onchange="addInputFields()" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="" disabled selected>Select number of URLs</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+
+        <div class="mb-4">
+            <ul id="imageUrlList"   placeholder="Image URL"; class="mb-4"></ul>
+        </div>
+
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create Policy</button>
+    </form>
+</div>
+    <table class="w-full border hidden xl:block">
+        <thead>
+        <tr>
+            <th class="border-b py-2 px-4">id</th>
+            <th class="border-b py-2 px-4">Project Name</th>
+            <th class="border-b py-2 px-4">Location</th>
+            <th class="border-b py-2 px-4">Client</th>
+            <th class="border-b py-2 px-4">Value</th>
+            <th class="border-b py-2 px-4">Start Date</th>
+            <th class="border-b py-2 px-4">End Date</th>
+            <th class="border-b py-2 px-4">Image URLs</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Loop through projects from the model attribute -->
+        <tr th:each="project : ${projects}">
+            <td class="border-b py-2 px-4" th:text="${project.id}"></td>
+            <td class="border-b py-2 px-4" th:text="${project.projectName}"></td>
+            <td class="border-b py-2 px-4" th:text="${project.location}"></td>
+            <td class="border-b py-2 px-4" th:text="${project.client}"></td>
+            <td class="border-b py-2 px-4" th:text="${project.value}"></td>
+            <td class="border-b py-2 px-4" th:text="${project.startDate}"></td>
+            <td class="border-b py-2 px-4" th:text="${project.endDate}"></td>
+            <td class="border-b py-2 px-4">
+                <ul>
+                    <li th:each="url : ${project.imageUrls}" th:text="${url}"></li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+<script>
+    function addInputFields() {
+        var numUrls = document.getElementById("numUrls").value;
+        var imageUrlList = document.getElementById("imageUrlList");
+
+        // Clear the existing input fields
+        imageUrlList.innerHTML = "";
+
+        for (var i = 0; i < numUrls; i++) {
+            var li = document.createElement("li");
+            var input = document.createElement("input");
+            input.type = "text";
+            input.name = "imageUrls";
+             input.placeholder="Image URL";
+            input.className = "w-full border border-gray-300 rounded-md px-3 py-2 mb-1 focus:outline-none focus:ring-2 focus:ring-blue-500";
+            li.appendChild(input);
+            imageUrlList.appendChild(li);
+        }
+    }
+</script>
+</body>
+</html>

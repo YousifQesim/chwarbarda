@@ -1,5 +1,7 @@
 package com.chwarbarda.Twekll_Chwarbarda.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "project")
 public class Project {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,13 +27,40 @@ public class Project {
     private double value;
 
     @Column(name = "start_date")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startDate;
 
     @Column(name = "end_date")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
+
+
+
 
     @ElementCollection
     private List<String> imageUrls;
+
+    // Constructors
+
+
+    public Project(String projectName, String location, String client, double value, Date startDate, Date endDate, List<String> imageUrls) {
+        this.projectName = projectName;
+        this.location = location;
+        this.client = client;
+        this.value = value;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.imageUrls = imageUrls;
+    }
+
+    public Project() {
+
+    }
+
+
+    // Getters and Setters
 
     public Long getId() {
         return id;
@@ -95,7 +125,4 @@ public class Project {
     public void setImageUrls(List<String> imageUrls) {
         this.imageUrls = imageUrls;
     }
-
-    // Constructors, getters, and setters
-    // ...
 }

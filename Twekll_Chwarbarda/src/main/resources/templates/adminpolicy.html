@@ -1,27 +1,23 @@
-<!doctype html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Admin service</title>
+  <title>Admin Policy</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
-
 </head>
 <body class="bg-gray-100 py-8 px-4">
-
 <a href="/admin" class="text-center bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">Admin Page</a>
 
-
-
-<div class="max-w-xl mx-auto mt-8">
-  <h2 class="text-2xl font-bold mb-4">Policy Form</h2>
-  <form th:action="@{/policies}" method="post" th:object="${Policy}" enctype="multipart/form-data">
+<div class="max-w-md mx-auto mt-8">
+  <form id="imageForm" th:action="@{/admin/addpolicies}" th:object="${policy}" method="post" class="bg-white shadow-md rounded px-8 py-6">
     <div class="mb-4">
-      <label for="imageCount" class="block text-gray-700 font-bold mb-1">Image URLs:</label>
-      <select id="imageCount" onchange="addImageInputs()" class="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:border-blue-500">
-        <option value="" disabled selected>Select number of URLs</option>
+      <h2 class="text-2xl font-bold mb-4">Create Policy</h2>
+      <select id="numUrls" name="numUrls" onchange="addInputFields()" class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option value="" disabled selected>Number of Image URLs to Add:</option>
+
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -32,80 +28,62 @@
         <option value="8">8</option>
         <option value="9">9</option>
         <option value="10">10</option>
+        <!-- Add more options as needed -->
       </select>
     </div>
-
-    <div id="imageInputsContainer" class="mb-4"></div>
-    <input type="submit" value="Add Post" class="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-800 transition duration-200">
+    <div>
+      <ul id="imageUrlList" class="my-4">
+        <li th:each="imageUrl : ${policy.imageUrls}" class="text-gray-700 my-2">
+          <span th:text="${imageUrl}"></span>
+        </li>
+      </ul>
+    </div>
+    <button type="submit" onclick="submitForm()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create Policy</button>
   </form>
-
-  <h2 class="text-2xl font-bold mt-8">Policy Table</h2>
-  <table class="w-full bg-white rounded-lg shadow-md mt-4 2xl:block hidden">
-    <thead>
-    <tr>
-      <th class="py-2 px-4 bg-gray-200 font-bold text-sm text-gray-700">ID</th>
-      <th class="py-2 px-4 bg-gray-200 font-bold text-sm text-gray-700">Image URLs</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="policy : ${policies}">
-      <td class="py-2 px-4 border-b border-gray-200" th:text="${policy.id}"></td>
-      <td class="py-2 px-4 border-b border-gray-200">
-        <ul>
-          <li th:each="imageUrl : ${policy.imageUrls}" th:text="${imageUrl}"></li>
-        </ul>
-      </td>
-    </tr>
-    </tbody>
-  </table>
 </div>
+<table class="w-full bg-white rounded-lg shadow-md mt-4">
+  <thead>
+  <tr>
+    <th class="py-2 px-4 bg-gray-200 font-bold text-sm text-gray-700">ID</th>
+    <th class="py-2 px-4 bg-gray-200 font-bold text-sm text-gray-700">Image URLs</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="policy : ${policies}">
+    <td class="py-2 px-4 border-b border-gray-200" th:text="${policy.id}"></td>
+    <td class="py-2 px-4 border-b border-gray-200">
+      <ul>
+        <li th:each="imageUrl : ${policy.imageUrls}" th:text="${imageUrl}"></li>
+      </ul>
+    </td>
+  </tr>
+  </tbody>
+</table>
 
-
-
-
-
-
-
-
-
-<div id="toast" class="fixed bottom-5 right-5 py-2 px-4 bg-gray-800 text-white rounded-md shadow-lg hidden">
-  <p id="toastMessage"></p>
-</div>
 <script>
-   var form = document.querySelector('form');
-  form.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
+    function addInputFields() {
+        var numUrls = document.getElementById("numUrls").value;
+        var imageUrlList = document.getElementById("imageUrlList");
 
-    var toastEl = document.getElementById('toast');
-    var toastMessageEl = document.getElementById('toastMessage');
-    toastMessageEl.textContent = 'Message displayed after submitting the form.';
-    toastEl.classList.remove('hidden');
-    setTimeout(function() {
-      toastEl.classList.add('hidden');
-    }, 3000);
-  form.reset();
-    // Perform form submission using AJAX or any other method if needed
-    // ...
-  });
+        // Clear the existing input fields
+        imageUrlList.innerHTML = "";
 
-      function addImageInputs() {
-    var count = parseInt(document.getElementById('imageCount').value);
-    var container = document.getElementById('imageInputsContainer');
-    container.innerHTML = ''; // Clear previous inputs
-
-    for (var i = 0; i < count; i++) {
-      var input = document.createElement('input');
-      input.type = 'text';
-      input.name = 'imageUrls[' + i + ']';
-      input.placeholder = 'Image URL';
-      input.required = true;
-      input.classList.add('w-full', 'border', 'border-gray-300', 'px-3', 'py-2', 'rounded', 'focus:outline-none', 'focus:border-blue-500', 'mt-2');
-      container.appendChild(input);
-      container.appendChild(document.createElement('br'));
+        for (var i = 0; i < numUrls; i++) {
+            var li = document.createElement("li");
+            var input = document.createElement("input");
+            input.type = "text";
+            input.name = "imageUrls";
+            input.className = "border border-gray-300 rounded px-3 py-2 mb-1 focus:outline-none focus:ring-2 focus:ring-blue-500";
+            li.appendChild(input);
+            imageUrlList.appendChild(li);
+        }
     }
-  }
+
+    function submitForm() {
+        var form = document.getElementById("imageForm");
+        form.action = "/admin/addpolicies";
+        form.method = "POST";
+    }
 </script>
-
-
 </body>
 </html>

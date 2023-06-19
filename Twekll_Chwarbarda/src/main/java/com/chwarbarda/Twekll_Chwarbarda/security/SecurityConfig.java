@@ -15,8 +15,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .anyRequest().permitAll()
+                .antMatchers("/admin/addproject").hasRole("ADMIN")
+                .antMatchers("/admin/addservice").hasRole("ADMIN")
+                .antMatchers("/admin/addCertifications").hasRole("ADMIN")
+                .antMatchers("/admin/addpolicies").hasRole("ADMIN")
+                .anyRequest().authenticated() // Require authentication for any other requests
                 .and()
                 .formLogin()
                 .loginPage("/login") // Set the login page URL
@@ -31,6 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
-                .withUser("admin").password("{noop}password").roles("ADMIN");
+                .withUser("admin").password("{noop}password").roles("ADMIN")
+                .and()
+                .withUser("user").password("{noop}password").roles("USER"); // Add a user role for authenticated users
     }
 }

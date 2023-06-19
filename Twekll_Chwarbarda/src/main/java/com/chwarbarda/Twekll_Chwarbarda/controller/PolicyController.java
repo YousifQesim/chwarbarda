@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -21,9 +21,9 @@ public class PolicyController {
     }
 
     @PostMapping("/addpolicies")
-    public String createPolicy(@RequestBody Policy policy) {
+    public String addProduct(@ModelAttribute("policy") Policy policy) {
         policyRepository.save(policy);
-        return "redirect:/admin/adminpolicy";
+        return "redirect:/admin/policy";
     }
 
     @GetMapping("/policy")

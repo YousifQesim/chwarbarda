@@ -5,6 +5,9 @@ import java.util.List;
 @Entity
 @Table(name = "certifications")
 public class Certifications {
+    public Certifications() {
+        // Default constructor
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

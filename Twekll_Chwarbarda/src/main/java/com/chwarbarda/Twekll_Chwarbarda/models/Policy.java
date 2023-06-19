@@ -7,6 +7,11 @@ import java.util.List;
 @Entity
 @Table(name = "policy")
 public class Policy {
+
+
+    public Policy() {
+        // Default constructor
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
