@@ -16,7 +16,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/admin/addproject").hasRole("ADMIN")
-                .antMatchers("/admin/addservice").hasRole("ADMIN")
+                .antMatchers("/admin/addservices").hasRole("ADMIN")
                 .antMatchers("/admin/addCertifications").hasRole("ADMIN")
                 .antMatchers("/admin/addpolicies").hasRole("ADMIN")
                 .anyRequest().authenticated() // Require authentication for any other requests
@@ -26,16 +26,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/admin")
                 .permitAll()
                 .and()
-                .logout()
-                .permitAll();
+                .logout();
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
-                .withUser("admin").password("{noop}password").roles("ADMIN")
-                .and()
-                .withUser("user").password("{noop}password").roles("USER"); // Add a user role for authenticated users
+                .withUser("admin").password("{noop}password").roles("ADMIN");
     }
 }

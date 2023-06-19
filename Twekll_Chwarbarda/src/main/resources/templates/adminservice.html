@@ -1,19 +1,16 @@
-
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Admin Service</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css">
 </head>
 <body class="bg-gray-100 py-8 px-4">
 <a href="/admin" class="text-center bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">Admin Page</a>
 
 <div class="max-w-md mx-auto">
-
   <form th:action="@{/admin/addservices}" th:object="${servicePost}" method="post" class="mt-8">
     <div class="mb-4">
       <label for="time" class="block text-gray-700 font-bold mb-1">Time:</label>
@@ -40,84 +37,66 @@
       <input type="text" id="postTitle" th:field="*{postTitle}" placeholder="Post Title" required class="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:border-blue-500">
     </div>
 
-
     <div class="mb-4">
       <label for="postDetail" class="block text-gray-700 font-bold mb-1">Post Detail:</label>
       <textarea id="postDetail" th:field="*{postDetail}" placeholder="Post Detail" required class="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:border-blue-500"></textarea>
     </div>
 
-    <select id="numUrls" name="numUrls" onchange="addInputFields()" class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-      <option value="" disabled selected>Number of Image URLs to Add:</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
+    <div class="mb-4">
+      <label for="numUrls" class="block text-gray-700 text-sm font-bold mb-2">Number of Image URLs to Add:</label>
+      <select id="numUrls" name="numUrls" onchange="addInputFields()" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option value="" disabled selected>Select number of URLs</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <!-- Add more options as needed -->
+      </select>
+    </div>
 
     <div class="mb-4">
       <ul id="imageUrlList"   placeholder="Image URL"; class="mb-4"></ul>
     </div>
 
-
-    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create Policy</button>
+    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4">Add Service</button>
   </form>
 </div>
 
-  <table class="w-full bg-white rounded-lg shadow-md">
-    <thead>
-    <tr>
-      <th class="py-2 px-4 bg-gray-200 font-bold text-sm text-gray-700">Time</th>
-      <th class="py-2 px-4 bg-gray-200 font-bold text-sm text-gray-700">Posted By</th>
-      <th class="py-2 px-4 bg-gray-200 font-bold text-sm text-gray-700">Categories</th>
-      <th class="py-2 px-4 bg-gray-200 font-bold text-sm text-gray-700">Comments</th>
-      <th class="py-2 px-4 bg-gray-200 font-bold text-sm text-gray-700">Post Title</th>
-      <th class="py-2 px-4 bg-gray-200 font-bold text-sm text-gray-700">Post Detail</th>
-      <th class="py-2 px-4 bg-gray-200 font-bold text-sm text-gray-700">Image URLs</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="post : ${servicePosts}">
-      <td class="py-2 px-4 border-b border-gray-200" th:text="${post.time}"></td>
-      <td class="py-2 px-4 border-b border-gray-200" th:text="${post.postedBy}"></td>
-      <td class="py-2 px-4 border-b border-gray-200" th:text="${post.categories}"></td>
-      <td class="py-2 px-4 border-b border-gray-200" th:text="${post.comments}"></td>
-      <td class="py-2 px-4 border-b border-gray-200" th:text="${post.postTitle}"></td>
-      <td class="py-2 px-4 border-b border-gray-200">
-        <p th:text="${#strings.abbreviate(post.postDetail, 10)}"></p>
-      </td>
-      <td class="py-2 px-4 border-b border-gray-200">
-        <ul>
-          <li th:each="imageUrl : ${post.imageUrls}" th:text="${imageUrl}"></li>
-        </ul>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+<table class="w-full bg-white rounded-lg shadow-md mt-8">
+  <thead>
+  <tr>
+    <th class="border-b px-6 py-4">id</th>
+    <th class="border-b px-6 py-4">Time</th>
+    <th class="border-b px-6 py-4">Posted By</th>
+    <th class="border-b px-6 py-4">Categories</th>
+    <th class="border-b px-6 py-4">Comments</th>
+    <th class="border-b px-6 py-4">Post Title</th>
+    <th class="border-b px-6 py-4">Post Detail</th>
+    <th class="border-b px-6 py-4">Image URLs</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="servicePost : ${servicePosts}">
+    <td class="border-b px-6 py-4" th:text="${servicePost.id}"></td>
+    <td class="border-b px-6 py-4" th:text="${servicePost.time}"></td>
+    <td class="border-b px-6 py-4" th:text="${servicePost.postedBy}"></td>
+    <td class="border-b px-6 py-4" th:text="${servicePost.categories}"></td>
+    <td class="border-b px-6 py-4" th:text="${servicePost.comments}"></td>
+    <td class="border-b px-6 py-4" th:text="${servicePost.postTitle}"></td>
+    <td class="border-b px-6 py-4" th:text="${servicePost.postDetail}"></td>
+    <td class="border-b px-6 py-4" th:text="${servicePost.imageUrls}"></td>
+  </tr>
+  </tbody>
+</table>
 
-</body>
 <script>
-  var form = document.querySelector('form');
-  form.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
-
-    var toastEl = document.getElementById('toast');
-    var toastMessageEl = document.getElementById('toastMessage');
-    toastMessageEl.textContent = 'Message displayed after submitting the form.';
-    toastEl.classList.remove('hidden');
-    setTimeout(function() {
-      toastEl.classList.add('hidden');
-    }, 3000);
-    form.reset();
-    // Perform form submission using AJAX or any other method if needed
-    // ...
-  });
-function addInputFields() {
+     function addInputFields() {
             var numUrls = document.getElementById("numUrls").value;
             var imageUrlList = document.getElementById("imageUrlList");
 
@@ -129,6 +108,7 @@ function addInputFields() {
                 var input = document.createElement("input");
                 input.type = "text";
                 input.name = "imageUrls";
+                input.placeholder="Image URL";
                 input.className = "border border-gray-300 rounded px-3 py-2 mb-1 focus:outline-none focus:ring-2 focus:ring-blue-500";
                 li.appendChild(input);
                 imageUrlList.appendChild(li);
@@ -140,7 +120,8 @@ function addInputFields() {
             form.action = "/admin/addservices";
             form.method = "POST";
         }
-</script>
+  </script>
+</body>
 </html>
 
 

@@ -73,6 +73,42 @@ public class AdminController {
         return "admincertification";
     }
 
+    @PostMapping("/addservices")
+    public String addServicePost(@ModelAttribute ServicePost service) {
+        servicePostRepository.save(service);
+        return "redirect:/admin/adminservice";
+    }
+
+    // Mapping for Policy module
+
+
+    @PostMapping("/addpolicies")
+    public String createPolicy(@ModelAttribute Policy policy) {
+        policyRepository.save(policy);
+        return "redirect:/admin/adminpolicy";
+    }
+
+
+
+
+
+
+
+    @PostMapping("/addproject")
+    public String addProject(@ModelAttribute Project project) {
+        projectRepository.save(project);
+        return "redirect:/admin/adminprojects";
+    }
+
+
+
+    @PostMapping("/addCertifications")
+    public String createCertifications(@ModelAttribute Certifications certifications) {
+        certificationsRepository.save(certifications);
+        return "redirect:/admin/admincertification";
+    }
+
+
 
 
 }
