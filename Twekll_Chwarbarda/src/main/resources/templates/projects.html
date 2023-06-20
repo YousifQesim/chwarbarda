@@ -40,6 +40,10 @@ height:100%;
   }
   .service_hr{
 background:white}
+.service_hr2{
+background:#FDE428;
+}
+
 .routes a{
 color:#002E5B;
 }
@@ -65,7 +69,14 @@ color:#002E5B;
 
     border-radius: 8px; /* Apply the same border-radius as the overlay */
 }
-
+.proj-img{
+width:60%;
+height:60%;
+}
+.img-overlay{
+width:60%;
+height:auto;
+}
 
 
  .footer{
@@ -111,7 +122,7 @@ color:#002E5B;
 <!--navbar-->
 <nav class="bg-white border-gray-200 dark:bg-gray-900 mr-6">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="https://flowbite.com/" class="flex items-center">
+        <a href="/" class="flex items-center">
             <img src="https://chwarbarda.com/wp-content/uploads/2019/09/06.png" style="width: 180px; height: px;" alt="Chwarbarda">
         </a>
         <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
@@ -195,7 +206,20 @@ color:#002E5B;
     </div>
 </div>
 
+<div class="grid grid-cols-3 gap-4 my-8 mx-8">
+    <div th:each="project : ${projects}" class="relative">
 
+        <div class="relative">
+            <a th:href="@{'/projects/' + ${project.id}}">
+                <img th:each="imageUrl : ${project.imageUrls[0]}" th:src="${imageUrl}" alt="Project Image" class="proj-img object-cover rounded-md">
+                <div class="img-overlay absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 ease-in-out bg-blue-900 bg-opacity-60 hover:cursor-pointer hover:opacity-100">
+                    <hr class="service_hr2 absolute left-30 bg-yellow-900 top-24 w-24 h-2 mx-auto my-1 border-0 rounded md:my-2">
+                    <h2 class="text-white text-center mx-2 text-xl font-bold" th:text="${project.projectName}"></h2>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
 
 <div class="footer contact-section text-white  h-24 w-full my-30">
     <div class="text-white text-center">

@@ -14,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-
 @RequestMapping("/admin")
 public class AdminController {
     private final ServicePostRepository servicePostRepository;
@@ -44,8 +43,6 @@ public class AdminController {
         return "adminservice";
     }
 
-
-
     // Mapping for Policy module
     @GetMapping("/adminpolicy")
     public String policyPage(Model model) {
@@ -63,8 +60,6 @@ public class AdminController {
         return "adminprojects";
     }
 
-
-
     // Mapping for Certifications module
     @GetMapping("/admincertification")
     public String certificationsPage(Model model) {
@@ -79,20 +74,11 @@ public class AdminController {
         return "redirect:/admin/adminservice";
     }
 
-    // Mapping for Policy module
-
-
     @PostMapping("/addpolicies")
     public String createPolicy(@ModelAttribute Policy policy) {
         policyRepository.save(policy);
         return "redirect:/admin/adminpolicy";
     }
-
-
-
-
-
-
 
     @PostMapping("/addproject")
     public String addProject(@ModelAttribute Project project) {
@@ -100,15 +86,11 @@ public class AdminController {
         return "redirect:/admin/adminprojects";
     }
 
-
-
     @PostMapping("/addCertifications")
     public String createCertifications(@ModelAttribute Certifications certifications) {
         certificationsRepository.save(certifications);
         return "redirect:/admin/admincertification";
     }
-
-
 
 
 }

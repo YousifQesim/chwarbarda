@@ -24,12 +24,11 @@ public class ProjectController {
         return "projects";
     }
 
-    @GetMapping("/{id}")
-    public String projectDetailsPage(@PathVariable Long id, Model model) {
-        Project project = projectRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid project Id: " + id));
+    @GetMapping("/projects/{id}")
+    public String getprojectDetail(@PathVariable Long id, Model model) {
+        Project project = projectRepository.findById(id).orElse(null);
         model.addAttribute("project", project);
-        return "project-details";
+        return "projectDetail";
     }
 
 }

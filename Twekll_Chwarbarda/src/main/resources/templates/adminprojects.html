@@ -60,42 +60,43 @@
             <ul id="imageUrlList"   placeholder="Image URL"; class="mb-4"></ul>
         </div>
 
-        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create Policy</button>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create Project</button>
     </form>
 </div>
-    <table class="w-full border hidden xl:block">
-        <thead>
-        <tr>
-            <th class="border-b py-2 px-4">id</th>
-            <th class="border-b py-2 px-4">Project Name</th>
-            <th class="border-b py-2 px-4">Location</th>
-            <th class="border-b py-2 px-4">Client</th>
-            <th class="border-b py-2 px-4">Value</th>
-            <th class="border-b py-2 px-4">Start Date</th>
-            <th class="border-b py-2 px-4">End Date</th>
-            <th class="border-b py-2 px-4">Image URLs</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!-- Loop through projects from the model attribute -->
-        <tr th:each="project : ${projects}">
-            <td class="border-b py-2 px-4" th:text="${project.id}"></td>
-            <td class="border-b py-2 px-4" th:text="${project.projectName}"></td>
-            <td class="border-b py-2 px-4" th:text="${project.location}"></td>
-            <td class="border-b py-2 px-4" th:text="${project.client}"></td>
-            <td class="border-b py-2 px-4" th:text="${project.value}"></td>
-            <td class="border-b py-2 px-4" th:text="${project.startDate}"></td>
-            <td class="border-b py-2 px-4" th:text="${project.endDate}"></td>
-            <td class="border-b py-2 px-4">
-                <ul>
-                    <li th:each="url : ${project.imageUrls}" th:text="${url}"></li>
-                </ul>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+<table class="w-full border hidden xl:block">
+    <thead>
+    <tr>
+        <th class="border-b py-2 px-4">id</th>
+        <th class="border-b py-2 px-4">Project Name</th>
+        <th class="border-b py-2 px-4">Location</th>
+        <th class="border-b py-2 px-4">Client</th>
+        <th class="border-b py-2 px-4">Value</th>
+        <th class="border-b py-2 px-4">Start Date</th>
+        <th class="border-b py-2 px-4">End Date</th>
+        <th class="border-b py-2 px-4">Image URLs</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Loop through projects from the model attribute -->
+    <tr th:each="project : ${projects}">
+        <td class="border-b py-2 px-4" th:text="${project.id}"></td>
+        <td class="border-b py-2 px-4" th:text="${project.projectName}"></td>
+        <td class="border-b py-2 px-4" th:text="${project.location}"></td>
+        <td class="border-b py-2 px-4" th:text="${project.client}"></td>
+        <td class="border-b py-2 px-4" th:text="${project.value}"></td>
+        <td class="border-b py-2 px-4" th:text="${project.startDate}"></td>
+        <td class="border-b py-2 px-4" th:text="${project.endDate}"></td>
+        <td class="border-b py-2 px-4">
+            <ul>
+                <li th:each="url : ${project.imageUrls}" th:text="${url}"></li>
+            </ul>
+        </td>
 
 
+    </tr>
+    </tbody>
+</table>
 
 <script>
     function addInputFields() {
@@ -110,7 +111,7 @@
             var input = document.createElement("input");
             input.type = "text";
             input.name = "imageUrls";
-             input.placeholder="Image URL";
+            input.placeholder = "Image URL";
             input.className = "w-full border border-gray-300 rounded-md px-3 py-2 mb-1 focus:outline-none focus:ring-2 focus:ring-blue-500";
             li.appendChild(input);
             imageUrlList.appendChild(li);
